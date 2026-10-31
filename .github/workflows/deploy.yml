@@ -24,6 +24,7 @@ jobs:
       - name: Output information
         run: echo "step run tests failed but running output"
   deploy:
+    if: failure() && needs.test.result == 'failure'
     needs: test
     runs-on: ubuntu-latest
     steps:
