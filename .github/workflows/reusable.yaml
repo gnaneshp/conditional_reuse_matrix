@@ -1,9 +1,16 @@
 name: reusable
-on: workflow_call
+on: 
+  workflow_call:
+    inputs:
+      filename:
+        default: notes.txt
+        description: "file name of the file"
+        type: string
+        required: true
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: deploy files
         run: |
-          echo "deploying files"
+          echo "deploying files ${{ inputs.filename }}"
