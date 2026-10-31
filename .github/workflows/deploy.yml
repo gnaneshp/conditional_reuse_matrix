@@ -28,6 +28,7 @@ jobs:
     needs: test
     uses: ./.github/workflows/reusable.yaml
   result:
+    if: failure()
     needs: deploy
     runs-on: ubuntu-latest
     steps:
