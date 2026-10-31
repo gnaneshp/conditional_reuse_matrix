@@ -27,3 +27,5 @@ jobs:
     if: failure() && needs.test.result == 'failure'
     needs: test
     uses: ./.github/workflows/reusable.yaml
+    with:
+      filename: detailed_notes.txt
