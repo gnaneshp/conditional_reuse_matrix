@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
-        uses: actions/checkout@{{ matrix.version }}
+        uses: actions/checkout@v3
       - name: Cache dependencies
         uses: actions/cache@v3
         with:
@@ -25,7 +25,7 @@ jobs:
         id: test_output
         run: npm run test
       - name: Output information
-        run: echo "step run tests failed but running output"
+        run: echo "step run tests failed but running output ${{ matrix.version }}"
   deploy:
     if: failure() && needs.test.result == 'failure'
     needs: test
