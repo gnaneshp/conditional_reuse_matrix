@@ -19,9 +19,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run tests
+        id: test_output
         run: npm run test
       - name: Output information
-        run: echo "..."
+        if: ${{ steps.test_output.outcome =='failure'}}
+        run: echo "step run tests failed but running output"
   deploy:
     needs: test
     runs-on: ubuntu-latest
