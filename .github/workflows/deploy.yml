@@ -26,4 +26,4 @@ jobs:
   deploy:
     if: failure() && needs.test.result == 'failure'
     needs: test
-    uses: ./.github/workflows/resuable.yaml
+    uses: ./.github/workflows/reusable.yaml
