@@ -7,10 +7,16 @@ on:
         description: "file name of the file"
         type: string
         required: false
+    outputs:
+      output1:
+        value: ${{ jobs.deploy.outputs.job_output }}
 jobs:
   deploy:
+    outputs:
+      job_output: ${{ steps.step1.outputs.final_output }}
     runs-on: ubuntu-latest
     steps:
       - name: deploy files
+        id: step1
         run: |
-          echo "deploying files ${{ inputs.filename }}"
+          echo "final_output=deploying files ${{ inputs.filename }}" >> $GITHUB_OUTPUT
