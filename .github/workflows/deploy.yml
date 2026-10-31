@@ -27,3 +27,9 @@ jobs:
     if: failure() && needs.test.result == 'failure'
     needs: test
     uses: ./.github/workflows/reusable.yaml
+  result:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: print output
+        run: echo ${{ needs.deploy.outputs.output1 }}
