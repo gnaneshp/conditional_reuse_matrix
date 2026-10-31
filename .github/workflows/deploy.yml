@@ -21,7 +21,6 @@ jobs:
       - name: Run tests
         id: test_output
         run: npm run test
-        continue-on-error: true
       - name: Output information
         run: echo "step run tests failed but running output"
   deploy:
