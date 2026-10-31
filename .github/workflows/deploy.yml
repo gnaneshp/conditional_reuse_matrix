@@ -6,16 +6,6 @@ on:
       - dev
 jobs:
   test:
-    strategy:
-      matrix:
-        version: [v1,v2,v3]
-        tag: [1,2,3]
-        include:
-          - version: v4
-            tag: 4
-        exclude:
-          - version: v1
-            tag: 1
     environment: testing
     runs-on: ubuntu-latest
     steps:
@@ -32,12 +22,8 @@ jobs:
         id: test_output
         run: npm run test
       - name: Output information
-        run: echo "step run tests failed but running output ${{ matrix.version }} ${{ matrix.tag }}"
+        run: echo "step run tests failed but running output "
   deploy:
     if: failure() && needs.test.result == 'failure'
     needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Output information
-        run: |        
-          echo "..."
+    uses: ./.github/workflows/resuable.yaml
