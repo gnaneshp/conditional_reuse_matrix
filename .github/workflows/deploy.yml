@@ -22,7 +22,7 @@ jobs:
         id: test_output
         run: npm run test
       - name: Output information
-        if: ${{ steps.test_output.outcome =='failure'}}
+        if: failure() && steps.test_output.outcome =='failure'
         run: echo "step run tests failed but running output"
   deploy:
     needs: test
