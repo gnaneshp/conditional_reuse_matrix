@@ -6,7 +6,7 @@ on:
         default: notes.txt
         description: "file name of the file"
         type: string
-        required: true
+        required: false
 jobs:
   deploy:
     runs-on: ubuntu-latest
